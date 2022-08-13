@@ -1,5 +1,6 @@
 ﻿using AuthenticationRepository;
 using DataAccess.DBContext;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +36,34 @@ namespace ApiAuthentication
             services.AddDbContext<AppDBContext>(options =>
                 options.UseMySQL(sqlConnectionstring)
             );
+            services.AddAuthentication(o =>
+            {
+                o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                {
+                   options.Audience = Configuration["TokenAuthentication:siteUrl"];
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes("")),
+                        
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = Configuration["TokenAuthentication:siteUrl"],
+                        
+                        ValidateAudience = true,
+                        ValidAudience = Configuration["TokenAuthentication:siteUrl"],
+                        
+                        ValidateLifetime = true,
+
+                    };
+                }
+            });
+
+
             services.AddMvc();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
@@ -65,8 +95,8 @@ namespace ApiAuthentication
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-               
-            
+
+
 
 
             app.UseHttpsRedirection();
