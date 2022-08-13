@@ -2,12 +2,16 @@
 using DataAccess.DTO;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net.Security;
+using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ApiAuthentication.Controller
 {
@@ -30,14 +34,23 @@ namespace ApiAuthentication.Controller
             var lstFacebook = _facebookRepository.GetAllFacebook();
             return Ok(lstFacebook);
         }
-
+        
+        [HttpPost]
+        [Route("Login")]
+        [AllowAnonymous]
         public IActionResult Login(User user)
         {
+            string accessToken = "";
             if (user.Password == "123444" && user.UserName == "tuanpham")
             {
                 //call access token
+                accessToken = generateJwtToken(user);
             }
-            return Ok();
+            else
+            {
+                return Ok(new {message = "khong dang nhap thanh cong",status = -100});
+            }
+            return Ok(accessToken);
         }
 
         private string generateJwtToken(User user)

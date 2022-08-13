@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -42,15 +43,15 @@ namespace ApiAuthentication
                 o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(options =>
-            {
+            
                 {
-                   options.Audience = Configuration["TokenAuthentication:siteUrl"];
+                    options.Audience = Configuration["TokenAuthentication:siteUrl"];
                     options.RequireHttpsMetadata = false;
+                    
                     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes("")),
-                        
+                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes(Configuration["Jwt:Key"])),
                         ValidateIssuerSigningKey = true,
                         ValidIssuer = Configuration["TokenAuthentication:siteUrl"],
                         
@@ -58,12 +59,42 @@ namespace ApiAuthentication
                         ValidAudience = Configuration["TokenAuthentication:siteUrl"],
                         
                         ValidateLifetime = true,
+                        
 
                     };
                 }
+           );
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { 
+                    Title = "My API", Version = "v1" 
+                                
+                });
+                c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                {
+                    In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                    Description = "Insert Json Web Token info field",
+                    Name = "Authorization",
+                    Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey
+                    
+                });
+                c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                        Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+
+                        Array.Empty<string>()
+                    }
+                });
+
             });
-
-
+            services.AddControllers();
             services.AddMvc();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
@@ -97,8 +128,8 @@ namespace ApiAuthentication
                 .AddEnvironmentVariables();
 
 
-
-
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             //dung authentication
@@ -109,6 +140,7 @@ namespace ApiAuthentication
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }
