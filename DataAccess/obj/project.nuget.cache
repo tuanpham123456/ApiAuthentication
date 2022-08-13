@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ncW9b0KJwoNkdHGNGjfMZFCcL5rfSN/gYnZp+9UeI4RFD/SA0zNVUYezLUbyBEA0FY+ceUY6Qgc3oo9v1gkvzg==",
+  "dgSpecHash": "loGIIj/veCJZhPXg5KSZzaau+GwVDO4LlpFURMOjc4rJkcOAhHdeQ+mmxfWwmS4L8IG/7aZAbFLBYOQc5FHkAg==",
   "success": true,
   "projectFilePath": "D:\\ApiAuthentication\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
@@ -14,9 +14,9 @@
     "C:\\Users\\bicud\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.17\\microsoft.entityframeworkcore.5.0.17.nupkg.sha512",
     "C:\\Users\\bicud\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.17\\microsoft.entityframeworkcore.abstractions.5.0.17.nupkg.sha512",
     "C:\\Users\\bicud\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.17\\microsoft.entityframeworkcore.analyzers.5.0.17.nupkg.sha512",
-    "C:\\Users\\bicud\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.0\\microsoft.entityframeworkcore.design.5.0.0.nupkg.sha512",
-    "C:\\Users\\bicud\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.5\\microsoft.entityframeworkcore.relational.5.0.5.nupkg.sha512",
-    "C:\\Users\\bicud\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.0\\microsoft.entityframeworkcore.tools.5.0.0.nupkg.sha512",
+    "C:\\Users\\bicud\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.17\\microsoft.entityframeworkcore.design.5.0.17.nupkg.sha512",
+    "C:\\Users\\bicud\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.17\\microsoft.entityframeworkcore.relational.5.0.17.nupkg.sha512",
+    "C:\\Users\\bicud\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.17\\microsoft.entityframeworkcore.tools.5.0.17.nupkg.sha512",
     "C:\\Users\\bicud\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\bicud\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
     "C:\\Users\\bicud\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
