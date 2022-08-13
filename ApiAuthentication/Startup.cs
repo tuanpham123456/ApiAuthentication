@@ -101,7 +101,8 @@ namespace ApiAuthentication
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            //dung authentication
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
