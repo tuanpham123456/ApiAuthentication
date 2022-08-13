@@ -1,3 +1,4 @@
+using AuthenticationRepository;
 using DataAccess.DBContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,7 +35,8 @@ namespace ApiAuthentication
             );
 
             services.AddMvc();
-            
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
 
         }
 
