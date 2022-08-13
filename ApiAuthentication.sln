@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAuthentication", "ApiAuthentication\ApiAuthentication.csproj", "{1EF25F7E-E406-4F59-8380-432C473CC0B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAuthentication", "ApiAuthentication\ApiAuthentication.csproj", "{1EF25F7E-E406-4F59-8380-432C473CC0B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{193E8D19-4989-4960-B608-829A9A7A973A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{193E8D19-4989-4960-B608-829A9A7A973A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationRepository", "Repository\AuthenticationRepository.csproj", "{FB7A4862-EDD9-4F6B-9C56-3214ED427122}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{193E8D19-4989-4960-B608-829A9A7A973A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{193E8D19-4989-4960-B608-829A9A7A973A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{193E8D19-4989-4960-B608-829A9A7A973A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB7A4862-EDD9-4F6B-9C56-3214ED427122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB7A4862-EDD9-4F6B-9C56-3214ED427122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB7A4862-EDD9-4F6B-9C56-3214ED427122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB7A4862-EDD9-4F6B-9C56-3214ED427122}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
