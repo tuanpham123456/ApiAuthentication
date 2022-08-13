@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ApiAuthentication\\ApiAuthentication\\DataAccess\\DataAccess.csproj": {}
+    "D:\\ApiAuthentication\\DataAccess\\DataAccess.csproj": {}
   },
   "projects": {
-    "D:\\ApiAuthentication\\ApiAuthentication\\DataAccess\\DataAccess.csproj": {
+    "D:\\ApiAuthentication\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ApiAuthentication\\ApiAuthentication\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "D:\\ApiAuthentication\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "D:\\ApiAuthentication\\ApiAuthentication\\DataAccess\\DataAccess.csproj",
+        "projectPath": "D:\\ApiAuthentication\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\bicud\\.nuget\\packages\\",
-        "outputPath": "D:\\ApiAuthentication\\ApiAuthentication\\DataAccess\\obj\\",
+        "outputPath": "D:\\ApiAuthentication\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bicud\\AppData\\Roaming\\NuGet\\NuGet.Config",
