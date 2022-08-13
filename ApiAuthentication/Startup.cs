@@ -1,4 +1,4 @@
-using AuthenticationRepository;
+﻿using AuthenticationRepository;
 using DataAccess.DBContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,7 +34,6 @@ namespace ApiAuthentication
             services.AddDbContext<AppDBContext>(options =>
                 options.UseMySQL(sqlConnectionstring)
             );
-
             services.AddMvc();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
@@ -53,6 +53,21 @@ namespace ApiAuthentication
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json");
+
+            var connnectionStringConfig = builder.Build();
+
+            // them config tu database
+            var config = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+               
+            
+
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
