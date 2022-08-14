@@ -1,4 +1,5 @@
-﻿using DataAccess.DTO;
+﻿using DataAccess;
+using DataAccess.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace AuthenticationRepository
 {
     public interface IFacebookRepository
     {
-        List<FacebookModel> GetAllFacebook();
+        List<Facebook> GetAllFacebook();
     }
 }

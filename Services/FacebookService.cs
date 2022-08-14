@@ -1,6 +1,7 @@
 ﻿using AuthenticationRepository;
 using AutoMapper;
 using DataAccess;
+using DataAccess.DBContext;
 using DataAccess.DTO;
 using log4net;
 using System;
@@ -14,20 +15,19 @@ namespace Services
     public class FacebookService : IFacebookRepository
     {
         private readonly IRepository<Facebook> _facebookRepository;
-        private readonly IMapper _mapper;
         private readonly ILog _logger;
-        public FacebookService(IRepository<Facebook> facebookRepository, IMapper mapper)
+        public FacebookService(IRepository<Facebook> facebookRepository, AppDBContext context)
         {
             _facebookRepository = facebookRepository;
-            _mapper = mapper;
             _logger = LogManager.GetLogger(typeof(FacebookService));        
 
         }
 
-        public List<FacebookModel> GetAllFacebook()
+        public List<Facebook> GetAllFacebook()
         {
             var lstFacebook = _facebookRepository.GetAll().ToList();
-            return _mapper.Map<List<Facebook>,List<FacebookModel>>(lstFacebook);
+            //return _mapper.Map<List<Facebook>,List<FacebookModel>>(lstFacebook);
+            return lstFacebook;
         }
     }
 }
